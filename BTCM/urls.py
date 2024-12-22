@@ -4,5 +4,6 @@ from BTCM import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('catalogue/', include('catalogue.urls')),
     path('', views.homepage),
 ]
