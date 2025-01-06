@@ -27,10 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^y2o(xvz63g4jkylvt8^4kuf305c#+^wa*i+jb(v)&ip@#@(82'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
                 '.herokuapp.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net','https://*.herokuapp.com']
 
 
 # Application definition
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'BTCM.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
