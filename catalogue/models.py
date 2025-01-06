@@ -1,15 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Catalogue(models.Model):
     baseid = models.CharField(max_length=6)
     name = models.CharField(max_length=255)
     notes = models.TextField
-
-class User(models.Model):
-    username = models.CharField(max_length=32)
-    password = models.CharField(max_length=255)
-    admin = models.BooleanField(default=False)
 
 class PaintScheme(models.Model):
     name = models.CharField(max_length=255)
