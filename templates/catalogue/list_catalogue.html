@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>Catalogue</title>
+{% endblock %}
+
+{% block content %}
+<table>
+
+    {% for data in dataset %}.
+
+    <tr>
+        <td>
+            {{data.baseid}}
+        </td>
+        <td>
+            {{data.name}}
+        </td>
+        <td>
+            {{data.notes}}
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+{% endblock %}
