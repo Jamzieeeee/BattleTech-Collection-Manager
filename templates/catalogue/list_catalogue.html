@@ -19,6 +19,12 @@
         <td>
             {{data.notes}}
         </td>
+        <td>
+            <a href="/catalogue/catalogue/update/{{data.id}}">Edit</a>
+        </td>
+        <td>
+            <a href="/catalogue/catalogue/delete/{{data.id}}">Delete</a>
+        </td>
     </tr>
 
     {% endfor %}
