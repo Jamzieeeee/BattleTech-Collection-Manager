@@ -10,8 +10,18 @@
         {% block sidebar %}
             {% if user.is_authenticated %}
                 <p>Welcome, {{ user.get_username }}. You are successfully logged in.</p>
+                <br>
+                <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                  </form>
             {% else %}
-                <p>Welcome, new user. Please log in.</p>
+                <p>Welcome, new user. Please 
+                    <a href="{% url 'login' %}?next={{ request.path }}">Log in</a> 
+                    or 
+                    <a href="{% url 'sign_up' %}?next={{ request.path }}">Register</a>
+                    .
+                </p>
             {% endif %}
         {% endblock %}
     </div>
