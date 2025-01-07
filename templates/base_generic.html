@@ -6,11 +6,19 @@
     {% endblock %}
   </head>
   <body>
-    {% block sidebar %}
-      <!-- insert default navigation text for every page -->
-    {% endblock %}
-    {% block content %}
-      <!-- default content text (typically empty) -->
-    {% endblock %}
+    <div style="width: 20%; float:left">
+        {% block sidebar %}
+            {% if user.is_authenticated %}
+                <p>Welcome, {{ user.get_username }}. You are successfully logged in.</p>
+            {% else %}
+                <p>Welcome, new user. Please log in.</p>
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div style="width: 80%; float:right">
+        {% block content %}
+          <!-- default content text (typically empty) -->
+        {% endblock %}
+    </div>
   </body>
 </html>
