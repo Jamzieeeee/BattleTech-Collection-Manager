@@ -34,7 +34,7 @@ def create_catalogue(request):
     context = {}
 
     # add the dictionary during initialization
-    form = CatalogueForm(request.POST or None)
+    form = CatalogueForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
 
@@ -67,7 +67,7 @@ def update_catalogue(request, id):
     obj = get_object_or_404(Catalogue, id = id)
 
     # pass the object as instance in form
-    form = CatalogueForm(request.POST or None, instance = obj)
+    form = CatalogueForm(request.POST or None, request.FILES or None, instance = obj)
 
     # save the data from the form and
     # redirect to detail_view

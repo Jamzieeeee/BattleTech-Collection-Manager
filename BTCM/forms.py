@@ -20,4 +20,4 @@ class CatalogueForm(forms.ModelForm):
         model = Catalogue
 
         # specify fields to be used
-        fields = ['baseid', 'name', 'notes']
+        fields = ['baseid', 'name', 'notes', 'image']

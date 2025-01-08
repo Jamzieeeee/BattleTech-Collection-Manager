@@ -6,6 +6,7 @@ class Catalogue(models.Model):
     baseid = models.CharField(max_length=6)
     name = models.CharField(max_length=255)
     notes = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True)
 
 class PaintScheme(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
