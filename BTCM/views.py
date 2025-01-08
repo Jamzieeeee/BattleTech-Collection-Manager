@@ -5,6 +5,8 @@ from django.contrib.auth import login
 from django.contrib.auth.models import Group
 from .forms import RegistrationForm, CatalogueForm
 from catalogue.models import Catalogue
+from django.core.paginator import Paginator
+
 
 
 def homepage(request):
@@ -43,9 +45,12 @@ def list_catalogue(request):
     context ={}
 
     # add the dictionary during initialization
-    context["dataset"] = Catalogue.objects.all()
-        
-    return render(request, "catalogue/list_catalogue.html", context)
+    catalogue_list = Catalogue.objects.all()
+    paginator = Paginator(catalogue_list, 25)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    return render(request, "catalogue/list_catalogue.html", {"page_obj": page_obj})
 
 def detail_catalogue(request, id):
     context ={}
