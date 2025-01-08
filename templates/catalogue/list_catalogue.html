@@ -5,16 +5,18 @@
 {% endblock %}
 
 {% block content %}
+<a href="/catalogue/catalogue/create">Create New Entry</a>
+
 <table>
 
-    {% for data in page_obj %}.
+    {% for data in page_obj %}
 
     <tr>
         <td>
             {{data.baseid}}
         </td>
         <td>
-            {{data.name}}
+            <a href="/catalogue/catalogue/detail/{{data.id}}">{{data.name}}</a>
         </td>
         <td>
             {{data.notes}}

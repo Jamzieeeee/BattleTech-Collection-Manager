@@ -11,7 +11,9 @@
     {{ data.baseid }}<br/>
     {{ data.name }}<br/>
     {{ data.notes }}<br/>
+    {% if data.image.url is not None %}:
     <img src='{{ data.image.url }}' /><br/>
+    {% endif %}
 
 </div>
 {% endblock %}

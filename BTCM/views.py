@@ -45,7 +45,7 @@ def list_catalogue(request):
     context ={}
 
     # add the dictionary during initialization
-    catalogue_list = Catalogue.objects.all()
+    catalogue_list = Catalogue.objects.all().order_by('baseid')
     paginator = Paginator(catalogue_list, 25)  # Show 25 contacts per page.
 
     page_number = request.GET.get("page")
