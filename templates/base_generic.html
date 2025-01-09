@@ -24,6 +24,8 @@
         <br>
         <a href="{% url 'list_catalogue' %}">Catalogue</a>
         {% if user.is_authenticated %}
+        <br>
+        <a href="{% url 'list_collection' %}">Collection</a>
         <p>Welcome, {{ user.get_username }}. You are successfully logged in.</p>
         <br>
         <form id="logout-form" method="post" action="{% url 'logout' %}">
