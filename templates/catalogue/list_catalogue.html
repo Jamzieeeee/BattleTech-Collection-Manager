@@ -7,18 +7,18 @@
 {% block content %}
 <a href="/catalogue/catalogue/create">Create New Entry</a>
 
-<table>
+<table class="table">
 
     {% for data in page_obj %}
 
     <tr>
-        <td>
+        <td class="text-nowrap">
             {{data.baseid}}
         </td>
         <td>
             <a href="/catalogue/catalogue/detail/{{data.id}}">{{data.name}}</a>
         </td>
-        <td>
+        <td class="d-none d-sm-table-cell">
             {{data.notes}}
         </td>
         <td>
@@ -31,23 +31,19 @@
 
     {% endfor %}
 
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li><a href="?page=1">&laquo; first</a></li>
+            <li>&nbsp;<a href="?page={{ page_obj.previous_page_number }}">prev</a>&nbsp;</li>
+        {% endif %}
     
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
+            <li>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</li>
     
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
+        {% if page_obj.has_next %}
+            <li>&nbsp;<a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;</li>
+            <li><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+        {% endif %}
+    </ul>
 
 </table>
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 <title>Register</title>
 {% endblock %}
@@ -8,7 +10,7 @@
 <h2>Sign up</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit">Sign up</button>
     </form>
 {% endblock %}
