@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <a href="/catalogue/catalogue/create">Create New Entry</a>
-
+{% endif %}
 <table class="table">
 
     {% for data in page_obj %}
@@ -21,12 +22,14 @@
         <td class="d-none d-sm-table-cell">
             {{data.notes}}
         </td>
+        {% if user.is_authenticated %}
         <td>
             <a href="/catalogue/catalogue/update/{{data.id}}">Edit</a>
         </td>
         <td>
             <a href="/catalogue/catalogue/delete/{{data.id}}">Delete</a>
         </td>
+        {% endif %}
     </tr>
 
     {% endfor %}
