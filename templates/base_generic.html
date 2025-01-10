@@ -8,9 +8,11 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
   {% block title %}
   <title>BattleTech Collection Manager</title>
   {% endblock %}
+
 </head>
 
 <body>
@@ -18,13 +20,13 @@
     <h1 class="text-center bg-primary bg-gradient">BATTLETECH COLLECTION MANAGER</h1>
   </div>
 
-{% if messages %}
-<div>
+  {% if messages %}
+  <div>
     {% for message in messages %}
-    <p {% if message.tags %} class="text-center text-bg-{{ message.tags }}"{% endif %}>{{ message }}</p>
+    <p {% if message.tags %} class="text-center text-bg-{{ message.tags }}" {% endif %}>{{ message }}</p>
     {% endfor %}
-</div>
-{% endif %}
+  </div>
+  {% endif %}
 
   <div class="container">
     <div class="row">
