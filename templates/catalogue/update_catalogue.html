@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 <title>Update Catalogue Entry</title>
 {% endblock %}
@@ -11,8 +13,8 @@
     {% csrf_token %}
 
     <!-- Using the formset -->
-    {{ form.as_p }}
+    {{ form|crispy }}
     
-    <input type="submit" value="Update">
+    <button type="submit">Update</button>
 </form>
 {% endblock %}
