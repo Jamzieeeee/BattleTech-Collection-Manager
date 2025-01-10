@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load user_tags %}
+
 {% block title %}
 <title>Delete Catalogue Entry</title>
 {% endblock %}
@@ -9,6 +11,7 @@
     <h3 class="text-warning">Delete from Catalogue</h3>
     <p>{{object.baseid}} {{object.name}}</p>
 </div>
+{% if user|has_group:'Catalogue Managers' %}
 <div>
     <!-- Create a Form -->
     <form method="POST">
@@ -20,4 +23,7 @@
         <a href="/catalogue/catalogue/list/">Cancel</a>
     </form>
 </div>
+{% else %}
+<p>You do not have permission to perform this operation!</p>
+{% endif %}
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load user_tags %}
+
 {% block title %}
 <title>Catalogue</title>
 {% endblock %}
@@ -8,7 +10,7 @@
 <div>
     <h3 class="text-warning">BattleTech Catalogue</h3>
 </div>
-{% if user.is_authenticated %}
+{% if user|has_group:'Catalogue Managers' %}
 <a href="/catalogue/catalogue/create">Create New Entry</a>
 {% endif %}
 <table class="table table-hover">
@@ -43,6 +45,8 @@
                 <button type="submit">Add</button>
             </form>
         </td>
+        {% endif %}
+        {% if user|has_group:'Catalogue Managers' %}
         <td>
             <a href="/catalogue/catalogue/update/{{data.id}}">Edit</a>
         </td>

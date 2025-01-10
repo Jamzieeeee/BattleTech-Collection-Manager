@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 
 {% load crispy_forms_tags %}
+{% load user_tags %}
+
 
 {% block title %}
 <title>Add Catalogue Entry</title>
@@ -10,6 +12,7 @@
 <div>
     <h3 class="text-warning">New Catalogue Entry</h3>
 </div>
+{% if user|has_group:'Catalogue Managers' %}
 <form method="POST" enctype="multipart/form-data">
 
     <!-- Security token -->
@@ -20,4 +23,7 @@
     
     <button type="submit">Create</button>
 </form>
+{% else %}
+<p>You do not have permission to perform this operation!</p>
+{% endif %}
 {% endblock %}
