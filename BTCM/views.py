@@ -3,10 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import *
 from django.contrib.auth import login
 from django.contrib.auth.models import Group
+from django.core.paginator import Paginator
+from django.contrib import messages
+
 from .forms import RegistrationForm, CatalogueForm, AddCollectionForm, UpdateCollectionForm
 from catalogue.models import Catalogue, Collection
-from django.core.paginator import Paginator
-
 
 
 def homepage(request):
@@ -39,6 +40,7 @@ def create_catalogue(request):
     form = CatalogueForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
+        messages.success(request, 'Item added to catalogue')
 
     context['form'] = form
     return render(request, "catalogue/create_catalogue.html", context)
@@ -75,6 +77,7 @@ def update_catalogue(request, id):
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Item updated in catalogue')
         return redirect(detail_catalogue, id = id)
     # add form dictionary to context
     context["form"] = form
@@ -91,6 +94,7 @@ def delete_catalogue(request, id):
     if request.method =="POST":
         # delete object
         obj.delete()
+        messages.success(request, 'Item deleted from catalogue')
         # after deleting redirect to 
         # home page
         return redirect(list_catalogue)
@@ -115,6 +119,7 @@ def create_collection(request):
         collection = form.save(commit=False)
         collection.owner = request.user
         collection.save()
+        messages.success(request, 'Item added to collection')
         return redirect(update_collection, collection.id)
 
     context['form'] = form
@@ -152,6 +157,7 @@ def update_collection(request, id):
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Item modified in collection')
         return redirect(detail_collection, id = id)
     # add form dictionary to context
     context["form"] = form
@@ -168,6 +174,7 @@ def delete_collection(request, id):
     if request.method =="POST":
         # delete object
         obj.delete()
+        messages.success(request, 'Item deleted from collection')
         # after deleting redirect to 
         # home page
         return redirect(list_collection)

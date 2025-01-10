@@ -18,6 +18,14 @@
     <h1 class="text-center bg-primary bg-gradient">BATTLETECH COLLECTION MANAGER</h1>
   </div>
 
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <p {% if message.tags %} class="text-center text-bg-{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
