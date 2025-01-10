@@ -10,8 +10,18 @@
 {% endif %}
 <table class="table">
 
-    {% for data in page_obj %}
+    <tr>
+        <th>Base ID</th>
+        <th>Name</th>
+        <th>Notes</th>
+        {% if user.is_authenticated %}
+        <th></th>
+        <th></th>
+        <th></th>
+        {% endif %}
+    </tr>
 
+    {% for data in page_obj %}
     <tr>
         <td class="text-nowrap">
             {{data.baseid}}
@@ -38,7 +48,6 @@
         </td>
         {% endif %}
     </tr>
-
     {% endfor %}
 
     <ul class="pagination">

@@ -7,12 +7,16 @@
 {% block content %}
 <table class="table">
 
-    {% for data in page_obj %}
-
     <tr>
-        <td>
-            {{ data.id }}
-        </td>
+        <th>Base ID</th>
+        <th>Name</th>
+        <th>Notes</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    {% for data in page_obj %}
+    <tr>
         <td class="text-nowrap">
             {{data.mini.baseid}}
         </td>
@@ -29,7 +33,6 @@
             <a href="/catalogue/collection/delete/{{data.id}}">Delete</a>
         </td>
     </tr>
-
     {% endfor %}
 
     <ul class="pagination">
