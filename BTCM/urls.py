@@ -11,9 +11,10 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('catalogue/', include('catalogue.urls')),
     path('', views.homepage),
-    path('sign_up/', views.sign_up, name = 'sign_up'),
+    path('sign_up/', views.sign_up, name='sign_up'),
 
 ]
 
 if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

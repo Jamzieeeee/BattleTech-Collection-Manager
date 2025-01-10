@@ -6,16 +6,19 @@ from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
 from django.contrib import messages
 
-from .forms import RegistrationForm, CatalogueForm, AddCollectionForm, UpdateCollectionForm
 from catalogue.models import Catalogue, Collection
+from .forms import (RegistrationForm, CatalogueForm, AddCollectionForm,
+UpdateCollectionForm)
 
 
 def homepage(request):
     # return HttpResponse('Homepage')
     return render(request, 'homepage.html')
 
+
 def catalogue(request):
     return render(request, 'catalogue/catalogue.html')
+
 
 def sign_up(request):
     if request.method == 'POST':
@@ -24,8 +27,8 @@ def sign_up(request):
             user = form.save(commit=False)
             user.save()
             group = Group.objects.get(name='Collectors')
-            user.groups.add(group) 
-            login(request,user)
+            user.groups.add(group)
+            login(request, user)
             return redirect('/')
     else:
         form = RegistrationForm()
@@ -45,8 +48,9 @@ def create_catalogue(request):
     context['form'] = form
     return render(request, "catalogue/create_catalogue.html", context)
 
+
 def list_catalogue(request):
-    context ={}
+    context = {}
 
     # add the dictionary during initialization
     catalogue_list = Catalogue.objects.all().order_by('baseid')
@@ -54,59 +58,57 @@ def list_catalogue(request):
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    return render(request, "catalogue/list_catalogue.html", {"page_obj": page_obj})
+    return render(request, "catalogue/list_catalogue.html",
+                  {"page_obj": page_obj})
+
 
 def detail_catalogue(request, id):
-    context ={}
+    context = {}
 
     # add the dictionary during initialization
-    context["data"] = Catalogue.objects.get(id = id)
-        
+    context["data"] = Catalogue.objects.get(id=id)
+
     return render(request, "catalogue/detail_catalogue.html", context)
 
+
 def update_catalogue(request, id):
-    context ={}
+    context = {}
 
     # fetch the object related to passed id
-    obj = get_object_or_404(Catalogue, id = id)
+    obj = get_object_or_404(Catalogue, id=id)
 
     # pass the object as instance in form
-    form = CatalogueForm(request.POST or None, request.FILES or None, instance = obj)
+    form = CatalogueForm(request.POST or None, request.FILES or None,
+                         instance=obj)
 
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
         messages.success(request, 'Item updated in catalogue')
-        return redirect(detail_catalogue, id = id)
+        return redirect(detail_catalogue, id=id)
     # add form dictionary to context
     context["form"] = form
 
     return render(request, "catalogue/update_catalogue.html", context)
 
+
 def delete_catalogue(request, id):
-    context ={}
+    context = {}
 
     # fetch the object related to passed id
-    obj = get_object_or_404(Catalogue, id = id)
+    obj = get_object_or_404(Catalogue, id=id)
     context['object'] = obj
 
-    if request.method =="POST":
+    if request.method == "POST":
         # delete object
         obj.delete()
         messages.success(request, 'Item deleted from catalogue')
-        # after deleting redirect to 
+        # after deleting redirect to
         # home page
         return redirect(list_catalogue)
 
     return render(request, "catalogue/delete_catalogue.html", context)
-
-
-
-
-
-
-
 
 
 # COLLECTION
@@ -125,8 +127,9 @@ def create_collection(request):
     context['form'] = form
     return render(request, "collection/create_collection.html", context)
 
+
 def list_collection(request):
-    context ={}
+    context = {}
 
     # add the dictionary during initialization
     collection_list = Collection.objects.filter(owner=request.user.id)
@@ -134,48 +137,53 @@ def list_collection(request):
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    return render(request, "collection/list_collection.html", {"page_obj": page_obj})
+    return render(request, "collection/list_collection.html",
+                  {"page_obj": page_obj})
+
 
 def detail_collection(request, id):
-    context ={}
+    context = {}
 
     # add the dictionary during initialization
-    context["data"] = Collection.objects.get(id = id)
-        
+    context["data"] = Collection.objects.get(id=id)
+
     return render(request, "collection/detail_collection.html", context)
 
+
 def update_collection(request, id):
-    context ={}
+    context = {}
 
     # fetch the object related to passed id
-    obj = get_object_or_404(Collection, id = id)
+    obj = get_object_or_404(Collection, id=id)
 
     # pass the object as instance in form
-    form = UpdateCollectionForm(request.POST or None, request.FILES or None, instance = obj)
+    form = UpdateCollectionForm(request.POST or None, request.FILES or None,
+                                instance=obj)
 
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
         messages.success(request, 'Item modified in collection')
-        return redirect(detail_collection, id = id)
+        return redirect(detail_collection, id=id)
     # add form dictionary to context
     context["form"] = form
 
     return render(request, "collection/update_collection.html", context)
 
+
 def delete_collection(request, id):
-    context ={}
+    context = {}
 
     # fetch the object related to passed id
-    obj = get_object_or_404(Collection, id = id)
+    obj = get_object_or_404(Collection, id=id)
     context['object'] = obj
 
-    if request.method =="POST":
+    if request.method == "POST":
         # delete object
         obj.delete()
         messages.success(request, 'Item deleted from collection')
-        # after deleting redirect to 
+        # after deleting redirect to
         # home page
         return redirect(list_collection)
 

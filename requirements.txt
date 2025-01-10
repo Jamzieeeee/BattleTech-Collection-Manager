@@ -7,3 +7,4 @@ sqlparse==0.5.2
 pillow==11.1.0
 django-crispy-forms==2.3
 crispy-bootstrap5==2024.10
+whitenoise==6.8.2

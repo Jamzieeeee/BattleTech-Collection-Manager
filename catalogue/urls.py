@@ -12,5 +12,4 @@ urlpatterns = [
     path('collection/detail/<id>', views.detail_collection),
     path('collection/update/<id>', views.update_collection),
     path('collection/delete/<id>', views.delete_collection),
-
 ]
