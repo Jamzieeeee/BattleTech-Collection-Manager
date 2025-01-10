@@ -15,7 +15,7 @@
     <p><strong>Notes: </strong>{{ data.notes }}</p>
     {% if data.mini.image.url is not None %}
     <div class="container-m">
-        <img class="img-fluid" src='{{ data.mini.image.url }}' />
+        <img class="img-fluid" src='{{ data.mini.image.url }}' alt="#{{data.id}} {{data.mini.name}}">
     </div>
     {% else %}
     <p>No Image Uploaded</p>

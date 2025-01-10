@@ -121,6 +121,34 @@ Detailed view of item in catalogue or collection
 - Allow the user to search the catalogue/their collection for a specific miniature by name or base ID
 - Allow the user to define a paint scheme (including notes on which paints were used etc...) and apply it to an item in their collection
 
+# Technologies Used
+
+Here are the technologies used to build this project:
+
+- [Gitpod](https://gitpod.io/) To build and create this project
+- [Github](https://github.com) To host and store the data for the site.
+- [PEP8 Validator](https://pep8ci.herokuapp.com/) Used to check python code for errors
+- [NeonDB](https://www.neon.tech/) Used to store PostgreSQL database.
+- [Heroku](https://id.heroku.com/) Used to deploy the project
+
+# Programming Languages, Frameworks and Libraries Used
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Django](https://www.djangoproject.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [CrispyForms](https://django-crispy-forms.readthedocs.io/)
+- [Crispy-Boostrap](https://pypi.org/project/crispy-bootstrap5/)
+- [Whitenoise](https://whitenoise.readthedocs.io/)
+- [Pillow](https://pypi.org/project/pillow/)
+
+# Agile
+
+This project was designed using Agile methodology, utilising the Project Board and Issues sections in GitHub
+
+- [Project Board](https://github.com/users/Jamzieeeee/projects/3/views/1)
+
 # Testing 
 
 ## Manual Testing

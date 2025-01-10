@@ -14,7 +14,7 @@
     <p><strong>Notes: </strong>{{ data.notes }}</p>
     {% if data.image.url is not None %}
     <div class="container-m">
-        <img class="img-fluid" src='{{ data.image.url }}' />
+        <img class="img-fluid" src='{{ data.image.url }}' alt="{{data.baseid}} {{data.name}}">
     </div>
     {% else %}
     <p>No Image Uploaded</p>
