@@ -6,7 +6,17 @@
 
 {% block content %}
 
-    <h1>This is the homepage</h1>
-    <p>Welcome to your Battletech Collection Manager</p>
+    <h1 class="text-warning">Welcome to the BattleTech Collection Manager</h1>
+    <p>This app allows you to keep track of your BattleTech miniatures.</p>
+    <p>You can view the BattleTech miniatures Catalogue and add items from it to your collection.</p>
+    <p>The main Catalogue can be updated by site admins.</p>
+
+    <a href="{% url 'list_catalogue' %}"><button>Catalogue</button></a>
+    <br>
+    {% if user.is_authenticated %}
+    <a href="{% url 'list_collection' %}"><button>Collection</button></a>
+    {% else %}
+    <p>You will need to log in to view your collection.</p>
+    {% endif %}
 
 {% endblock %}

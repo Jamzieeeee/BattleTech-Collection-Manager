@@ -7,6 +7,9 @@
 {% endblock %}
 
 {% block content %}
+<div>
+    <h3 class="text-warning">Update Collection Entry</h3>
+</div>
 <form method="POST" enctype="multipart/form-data">
 
     <!-- Security token -->
@@ -16,5 +19,6 @@
     {{ form|crispy }}
     
     <button type="submit">Update</button>
+    <a href="/catalogue/collection/list/">Cancel</a>
 </form>
 {% endblock %}

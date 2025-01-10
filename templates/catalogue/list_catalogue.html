@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+<div>
+    <h3 class="text-warning">BattleTech Catalogue</h3>
+</div>
 {% if user.is_authenticated %}
 <a href="/catalogue/catalogue/create">Create New Entry</a>
 {% endif %}
@@ -13,7 +16,7 @@
     <tr>
         <th class="text-nowrap table-fit">Base ID</th>
         <th>Name</th>
-        <th>Notes</th>
+        <th class="d-none d-sm-table-cell">Notes</th>
         {% if user.is_authenticated %}
         <th class="table-fit"></th>
         <th class="table-fit"></th>

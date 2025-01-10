@@ -86,7 +86,7 @@ def delete_catalogue(request, id):
 
     # fetch the object related to passed id
     obj = get_object_or_404(Catalogue, id = id)
-
+    context['object'] = obj
 
     if request.method =="POST":
         # delete object
@@ -163,7 +163,7 @@ def delete_collection(request, id):
 
     # fetch the object related to passed id
     obj = get_object_or_404(Collection, id = id)
-
+    context['object'] = obj
 
     if request.method =="POST":
         # delete object

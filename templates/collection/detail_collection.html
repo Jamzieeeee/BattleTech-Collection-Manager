@@ -6,14 +6,19 @@
 
 {% block content %}
 <div>
-    
-    <!-- Specify fields to be displayed -->
-    {{ data.id }}
-    {{ data.mini.baseid }}<br/>
-    {{ data.mini.name }}<br/>
-    {{ data.notes }}<br/>
-    {% if data.image.url is not None %}:
-    <img src='{{ data.image.url }}' /><br/>
+    <h3 class="text-warning">View Collection Entry</h3>
+</div>
+<div>
+    <h5><strong>#{{ data.id }}</strong></h5>
+    <p><strong>Base ID: </strong>{{ data.mini.baseid }}</p>
+    <p><strong>Name: </strong>{{ data.mini.name }}</p>
+    <p><strong>Notes: </strong>{{ data.notes }}</p>
+    {% if data.mini.image.url is not None %}
+    <div class="container-m">
+        <img class="img-fluid" src='{{ data.mini.image.url }}' />
+    </div>
+    {% else %}
+    <p>No Image Uploaded</p>
     {% endif %}
 
 </div>

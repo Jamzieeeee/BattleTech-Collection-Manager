@@ -6,13 +6,18 @@
 
 {% block content %}
 <div>
-    
-    <!-- Specify fields to be displayed -->
-    {{ data.baseid }}<br/>
-    {{ data.name }}<br/>
-    {{ data.notes }}<br/>
-    {% if data.image.url is not None %}:
-    <img src='{{ data.image.url }}' /><br/>
+    <h3 class="text-warning">View Catalogue Entry</h3>
+</div>
+<div>
+    <p><strong>Base ID: </strong>{{ data.baseid }}</p>
+    <p><strong>Name: </strong>{{ data.name }}</p>
+    <p><strong>Notes: </strong>{{ data.notes }}</p>
+    {% if data.image.url is not None %}
+    <div class="container-m">
+        <img class="img-fluid" src='{{ data.image.url }}' />
+    </div>
+    {% else %}
+    <p>No Image Uploaded</p>
     {% endif %}
 
 </div>

@@ -24,10 +24,10 @@
         {% block sidebar %}
         <a href="/">Home</a>
         <br>
-        <a href="{% url 'list_catalogue' %}">Catalogue</a>
+        <a href="{% url 'list_catalogue' %}">View the Catalogue</a>
         {% if user.is_authenticated %}
         <br>
-        <a href="{% url 'list_collection' %}">Collection</a>
+        <a href="{% url 'list_collection' %}">View your Collection</a>
         <p>Welcome, {{ user.get_username }}. You are successfully logged in.</p>
         <br>
         <form id="logout-form" method="post" action="{% url 'logout' %}">

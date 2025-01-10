@@ -5,9 +5,20 @@
 {% endblock %}
 
 {% block content %}
+<div>
+    <h3 class="text-warning">Your Collection</h3>
+</div>
+
+{% if not page_obj %}
+
+<p>Your Collection is empty! Go to the Catalogue to add some miniatures.</p>
+
+{% else %}
+
 <table class="table table-hover">
 
     <tr>
+        <th class="table-fit">#</th>
         <th class="text-nowrap table-fit">Base ID</th>
         <th>Name</th>
         <th>Notes</th>
@@ -17,6 +28,9 @@
 
     {% for data in page_obj %}
     <tr>
+        <td>
+            {{data.id}}
+        </td>
         <td>
             {{data.mini.baseid}}
         </td>
@@ -50,4 +64,7 @@
     </ul>
 
 </table>
+
+{% endif %}
+
 {% endblock %}
