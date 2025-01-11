@@ -26,6 +26,7 @@ def sign_up(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
+            # Add all new users to the 'Collectors' group
             group = Group.objects.get(name='Collectors')
             user.groups.add(group)
             login(request, user)
@@ -39,7 +40,6 @@ def sign_up(request):
 def create_catalogue(request):
     context = {}
 
-    # add the dictionary during initialization
     form = CatalogueForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
@@ -52,7 +52,7 @@ def create_catalogue(request):
 def list_catalogue(request):
     context = {}
 
-    # add the dictionary during initialization
+    # Sort by baseid as a string, not ideal
     catalogue_list = Catalogue.objects.all().order_by('baseid')
     paginator = Paginator(catalogue_list, 25)  # Show 25 contacts per page.
 
@@ -65,7 +65,6 @@ def list_catalogue(request):
 def detail_catalogue(request, id):
     context = {}
 
-    # add the dictionary during initialization
     context["data"] = Catalogue.objects.get(id=id)
 
     return render(request, "catalogue/detail_catalogue.html", context)
@@ -115,13 +114,15 @@ def delete_catalogue(request, id):
 def create_collection(request):
     context = {}
 
-    # add the dictionary during initialization
+    # Form contains ID of Catalogue entry as hidden field
     form = AddCollectionForm(request.POST or None)
     if form.is_valid():
         collection = form.save(commit=False)
+        # Add to current user's collection
         collection.owner = request.user
         collection.save()
         messages.success(request, 'Item added to collection')
+        # Take user to update page to add notes etc
         return redirect(update_collection, collection.id)
 
     context['form'] = form
@@ -131,7 +132,7 @@ def create_collection(request):
 def list_collection(request):
     context = {}
 
-    # add the dictionary during initialization
+    # Only show current user's collection items
     collection_list = Collection.objects.filter(owner=request.user.id)
     paginator = Paginator(collection_list, 25)  # Show 25 contacts per page.
 
@@ -144,7 +145,6 @@ def list_collection(request):
 def detail_collection(request, id):
     context = {}
 
-    # add the dictionary during initialization
     context["data"] = Collection.objects.get(id=id)
 
     return render(request, "collection/detail_collection.html", context)

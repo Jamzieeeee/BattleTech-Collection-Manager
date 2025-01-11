@@ -117,7 +117,7 @@ Detailed view of item in catalogue or collection
 
 ## Future Features
 
-- Allow the user to add images of items to their collection
+- Allow the user to add their own image of an item in their collection
 - Allow the user to search the catalogue/their collection for a specific miniature by name or base ID
 - Allow the user to define a paint scheme (including notes on which paints were used etc...) and apply it to an item in their collection
 
@@ -176,6 +176,8 @@ This project was designed using Agile methodology, utilising the Project Board a
 | Can add item to catalogue | Item added successfully | Pass |
 | Can edit item in catalogue | Item edited successfully | Pass |
 | Can delete item in catalogue | Item deleted successfully | Pass |
+| Cannot add item with invalid Base ID | Error message displayed | Pass |
+| Cannot add image larger than 500KB | Error message displayed | Pass |
 
 ## Validator Testing 
 

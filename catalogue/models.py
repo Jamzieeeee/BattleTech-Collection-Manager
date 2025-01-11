@@ -8,6 +8,7 @@ import re
 class Catalogue(models.Model):
     # Catalyst Base IDs are of the form '123', '12-34', 'a1', or '1A-23'
     def validate_baseid(baseid_str):
+        # Does not pass the Pep8 linter but is perfectly legal
         pattern=re.compile("^(a\d|\d+(\-\d+)?|1A\-\d+)$")
         if not pattern.match(baseid_str):
             raise ValidationError("Base ID is not legal.")
