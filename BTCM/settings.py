@@ -30,14 +30,16 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ['8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
-                '.herokuapp.com']
+                 '.herokuapp.com']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net','https://*.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
+                        'https://*.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -138,6 +140,13 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+STORAGES = {
+    # Set staticfiles storage backend to whitenoise
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -147,6 +156,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
