@@ -29,11 +29,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
-                 '.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
+    '.herokuapp.com', '127.0.0.1'
+]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
-                        'https://*.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-jamzieeeee-battletechco-aqkf1m6fpk5.ws.codeinstitute-ide.net',
+    'https://*.herokuapp.com'
+    ]
 
 
 # Application definition
