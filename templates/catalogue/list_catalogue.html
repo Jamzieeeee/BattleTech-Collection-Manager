@@ -13,6 +13,21 @@
 {% if user|has_group:'Catalogue Managers' %}
 <a href="/catalogue/catalogue/create">Create New Entry</a>
 {% endif %}
+
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li><a href="?page=1">&laquo; first</a></li>
+        <li>&nbsp;<a href="?page={{ page_obj.previous_page_number }}">prev</a>&nbsp;</li>
+    {% endif %}
+
+        <li>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</li>
+
+    {% if page_obj.has_next %}
+        <li>&nbsp;<a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;</li>
+        <li><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+    {% endif %}
+</ul>
+
 <table class="table table-hover">
 
     <tr>
@@ -57,19 +72,5 @@
     </tr>
     {% endfor %}
 </table>
-
-<ul class="pagination">
-    {% if page_obj.has_previous %}
-        <li><a href="?page=1">&laquo; first</a></li>
-        <li>&nbsp;<a href="?page={{ page_obj.previous_page_number }}">prev</a>&nbsp;</li>
-    {% endif %}
-
-        <li>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</li>
-
-    {% if page_obj.has_next %}
-        <li>&nbsp;<a href="?page={{ page_obj.next_page_number }}">next</a>&nbsp;</li>
-        <li><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
-    {% endif %}
-</ul>
 
 {% endblock %}
