@@ -23,6 +23,11 @@ class CatalogueForm(forms.ModelForm):
         # specify fields to be used
         fields = ['baseid', 'name', 'notes', 'image']
 
+        help_texts = {
+            'baseid': "This can be found on the base of the model, "
+            "and is of the form '123', '12-34', 'a1', or '1A-23'."
+        }
+
 
 class AddCollectionForm(forms.ModelForm):
 
