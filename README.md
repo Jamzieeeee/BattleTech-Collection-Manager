@@ -32,7 +32,7 @@ My three main objectives were:
 
 - ### Store data on an external cloud database
 
-  I used NeonDB to store the PostgreSQL database for this project.
+  I used AWS to store the static files, NeonDB to store the PostgreSQL database for this project.
 
 ___
 
@@ -130,6 +130,7 @@ Here are the technologies used to build this project:
 - [PEP8 Validator](https://pep8ci.herokuapp.com/) Used to check python code for errors
 - [NeonDB](https://www.neon.tech/) Used to store PostgreSQL database.
 - [Heroku](https://id.heroku.com/) Used to deploy the project
+- [AWS S3](https://aws.amazon.com/s3/aws) Used to store static files
 
 # Programming Languages, Frameworks and Libraries Used
 
@@ -142,6 +143,7 @@ Here are the technologies used to build this project:
 - [Crispy-Boostrap](https://pypi.org/project/crispy-bootstrap5/)
 - [Whitenoise](https://whitenoise.readthedocs.io/)
 - [Pillow](https://pypi.org/project/pillow/)
+- [Boto3](https://pypi.org/project/boto3)
 
 # Agile
 
@@ -193,7 +195,7 @@ Testing the homepage and a Collection detail page with an image.
 ### Python
 Python pep8 validation was done via [Code Institute's Python Linter](https://pep8ci.herokuapp.com/)
 
-A number of errors and whitespace issues were found and rectified. The linter does not seem to handle escape characters in regular expression correctly (models.py, line: 11)
+A number of errors and whitespace issues were found and rectified. The linter does not seem to handle escape characters in regular expression correctly, because Python 3 interprets \d as an invalid escape sequence, which was fixed by using double backslashes (models.py, line: 11).
 
 Python Files Tested:
 
